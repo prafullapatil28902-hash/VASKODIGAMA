@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/*
+  VASKODIGAMA INTELLIGENCE OS — Design System
+  A dark, terminal-grade research environment. Not a marketing site.
+  Inspiration: Bloomberg Terminal, Linear, Stripe, Arc.
+*/
+
+@theme inline {
+  /* Surfaces */
+  --color-void: #05070e;
+  --color-bg: #080b14;
+  --color-surface: #0b1020;
+  --color-panel: #0e1426;
+  --color-elevated: #131b30;
+  --color-line: rgba(148, 163, 200, 0.12);
+  --color-line-strong: rgba(148, 163, 200, 0.22);
+
+  /* Text */
+  --color-ink: #eef1f8;
+  --color-ink-soft: #c4ccdc;
+  --color-muted: #8a93a8;
+  --color-dim: #5a6379;
+
+  /* Signal palette */
+  --color-signal: #34e0c8;
+  --color-signal-deep: #16b8a3;
+  --color-azure: #5b9dff;
+  --color-up: #3ddc91;
+  --color-down: #ff6b78;
+  --color-amber: #f5b945;
+  --color-violet: #a78bff;
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --radius-xl: 16px;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-bg);
+}
+
+body {
+  background:
+    radial-gradient(1200px 700px at 12% -8%, rgba(52, 224, 200, 0.07), transparent 60%),
+    radial-gradient(1100px 600px at 92% 4%, rgba(91, 157, 255, 0.07), transparent 55%),
+    var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fine grid backdrop — gives the "instrument panel" feel */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(148, 163, 200, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(148, 163, 200, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.panel {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.018), rgba(255, 255, 255, 0)) , var(--color-panel);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+}
+
+.panel-hover {
+  transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+.panel-hover:hover {
+  border-color: var(--color-line-strong);
+  background: var(--color-elevated);
+}
+
+.mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  color: var(--color-muted);
+}
+
+.text-gradient {
+  background: linear-gradient(120deg, #eef1f8 10%, #a9f6ec 50%, #9cc4ff 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Custom scrollbar to keep the terminal vibe */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: var(--color-void); }
+::-webkit-scrollbar-thumb {
+  background: #1c2640;
+  border-radius: 8px;
+  border: 2px solid var(--color-void);
+}
+::-webkit-scrollbar-thumb:hover { background: #2a3858; }
+
+/* ── Animations ───────────────────────────────────────── */
+@keyframes pulse-node {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.18); }
+}
+@keyframes dash-flow {
+  to { stroke-dashoffset: -28; }
+}
+@keyframes signal-travel {
+  0% { offset-distance: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+@keyframes ring-expand {
+  0% { r: 6; opacity: 0.5; }
+  100% { r: 34; opacity: 0; }
+}
+@keyframes rise-fade {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.animate-rise { animation: rise-fade 0.6s ease both; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
