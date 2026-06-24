@@ -142,16 +142,16 @@ export function Workspace({ initial }: { initial: WorkspaceInitial }) {
             )}
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={() => setFiltersOpen((v) => !v)} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-white/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong lg:hidden">
+            <button onClick={() => setFiltersOpen((v) => !v)} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-ink/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong lg:hidden">
               <SlidersHorizontal size={14} /> Filters {activeFilters > 0 && <span className="mono text-signal">{activeFilters}</span>}
             </button>
-            <button onClick={saveSearch} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-white/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong">
+            <button onClick={saveSearch} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-ink/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong">
               <Save size={14} /> <span className="hidden sm:inline">Save</span>
             </button>
-            <button onClick={exportAll} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-white/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong">
+            <button onClick={exportAll} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-ink/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong">
               <Download size={14} /> <span className="hidden sm:inline">Export</span>
             </button>
-            <button onClick={reset} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-white/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong">
+            <button onClick={reset} className="inline-flex items-center gap-1.5 rounded-lg border border-line bg-ink/[0.03] px-3 py-2.5 text-[13px] text-ink-soft hover:border-line-strong">
               <RotateCcw size={14} /> <span className="hidden sm:inline">Reset</span>
             </button>
           </div>
@@ -287,7 +287,7 @@ function ResearchView({ records, onOpen }: { records: TradeRecord[]; onOpen: (r:
         const exporter = tradeData.getCompany(r.exporterSlug);
         const importer = tradeData.getCompany(r.importerSlug);
         return (
-          <button key={r.id} onClick={() => onOpen(r)} className="group grid w-full gap-3 px-4 py-3.5 text-left transition-colors hover:bg-white/[0.025] md:grid-cols-[1.6fr_1.4fr_0.8fr]">
+          <button key={r.id} onClick={() => onOpen(r)} className="group grid w-full gap-3 px-4 py-3.5 text-left transition-colors hover:bg-ink/[0.025] md:grid-cols-[1.6fr_1.4fr_0.8fr]">
             <div className="min-w-0">
               <p className="truncate text-[14px] font-medium text-ink">{r.product}</p>
               <p className="mono mt-0.5 text-[11px] text-dim">{r.productGroup} · HS {r.hsCode}</p>
@@ -325,7 +325,7 @@ function TableView({ records, onOpen }: { records: TradeRecord[]; onOpen: (r: Tr
         </thead>
         <tbody className="divide-y divide-line">
           {records.map((r) => (
-            <tr key={r.id} onClick={() => onOpen(r)} className="cursor-pointer transition-colors hover:bg-white/[0.025]">
+            <tr key={r.id} onClick={() => onOpen(r)} className="cursor-pointer transition-colors hover:bg-ink/[0.025]">
               <td className="mono px-4 py-2.5 text-[12px] text-signal">{r.id}</td>
               <td className="mono px-4 py-2.5 text-muted">{fmtDate(r.date)}</td>
               <td className="px-4 py-2.5"><span className="text-ink-soft">{r.productGroup}</span><span className="mono ml-1.5 text-[11px] text-dim">{r.hsCode}</span></td>

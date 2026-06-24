@@ -60,7 +60,7 @@ export default function AboutPage() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {PRINCIPLES.map((p) => (
               <div key={p.title} className="panel p-5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-signal">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-ink/[0.03] text-signal">
                   <p.icon size={18} />
                 </span>
                 <h3 className="mt-3 text-[15px] font-semibold text-ink">{p.title}</h3>

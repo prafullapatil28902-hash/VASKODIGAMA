@@ -49,13 +49,13 @@ export function Constellation({ className }: { className?: string }) {
       <svg viewBox="0 0 820 420" className="h-full w-full" role="img" aria-label="Trade intelligence constellation showing relationships between India, Germany, United States, UAE and Vietnam">
         <defs>
           <linearGradient id="link-grad" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#34e0c8" stopOpacity="0.1" />
-            <stop offset="50%" stopColor="#34e0c8" stopOpacity="0.55" />
-            <stop offset="100%" stopColor="#5b9dff" stopOpacity="0.1" />
+            <stop offset="0%" stopColor="var(--color-signal)" stopOpacity="0.1" />
+            <stop offset="50%" stopColor="var(--color-signal)" stopOpacity="0.55" />
+            <stop offset="100%" stopColor="var(--color-azure)" stopOpacity="0.1" />
           </linearGradient>
           <radialGradient id="node-glow">
-            <stop offset="0%" stopColor="#5be3d2" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#5be3d2" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--color-signal-bright)" stopOpacity="0.9" />
+            <stop offset="100%" stopColor="var(--color-signal-bright)" stopOpacity="0" />
           </radialGradient>
           <filter id="soft">
             <feGaussianBlur stdDeviation="3" />
@@ -74,14 +74,14 @@ export function Constellation({ className }: { className?: string }) {
               <path
                 d={d}
                 fill="none"
-                stroke="#34e0c8"
+                stroke="var(--color-signal)"
                 strokeWidth="1.4"
                 strokeOpacity="0.5"
                 strokeDasharray="3 8"
                 style={{ animation: `dash-flow ${3 + (i % 3)}s linear infinite` }}
               />
               {/* travelling signal pulse */}
-              <circle r="2.6" fill="#aef6ec">
+              <circle r="2.6" fill="var(--color-signal-bright)">
                 <animateMotion
                   dur={`${4 + (i % 4)}s`}
                   repeatCount="indefinite"
@@ -108,7 +108,7 @@ export function Constellation({ className }: { className?: string }) {
               {/* glow */}
               <circle cx={n.x} cy={n.y} r={n.size * 2.4} fill="url(#node-glow)" filter="url(#soft)" />
               {/* expanding ring */}
-              <circle cx={n.x} cy={n.y} r={n.size} fill="none" stroke="#34e0c8" strokeWidth="1.2">
+              <circle cx={n.x} cy={n.y} r={n.size} fill="none" stroke="var(--color-signal)" strokeWidth="1.2">
                 <animate attributeName="r" values={`${n.size};${n.size * 2.8}`} dur="3s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.6;0" dur="3s" begin={`${i * 0.5}s`} repeatCount="indefinite" />
               </circle>
@@ -117,10 +117,10 @@ export function Constellation({ className }: { className?: string }) {
                 cx={n.x}
                 cy={n.y}
                 r={n.size * 0.55}
-                fill={isActive ? "#aef6ec" : "#34e0c8"}
+                fill={isActive ? "var(--color-signal-bright)" : "var(--color-signal)"}
                 style={{ animation: `pulse-node ${2.4 + (i % 3) * 0.4}s ease-in-out infinite` }}
               />
-              <circle cx={n.x} cy={n.y} r={n.size} fill="none" stroke="#5be3d2" strokeOpacity="0.4" strokeWidth="1" />
+              <circle cx={n.x} cy={n.y} r={n.size} fill="none" stroke="var(--color-signal-bright)" strokeOpacity="0.4" strokeWidth="1" />
 
               {/* label */}
               <text
@@ -128,7 +128,7 @@ export function Constellation({ className }: { className?: string }) {
                 y={n.y - n.size - 10}
                 textAnchor="middle"
                 className="mono"
-                fill={isActive ? "#eef1f8" : "#c4ccdc"}
+                fill={isActive ? "var(--color-ink)" : "var(--color-ink-soft)"}
                 fontSize="12"
                 fontWeight="600"
               >
@@ -139,7 +139,7 @@ export function Constellation({ className }: { className?: string }) {
                 y={n.y + n.size + 18}
                 textAnchor="middle"
                 className="mono"
-                fill="#8a93a8"
+                fill="var(--color-muted)"
                 fontSize="9"
                 style={{ opacity: isActive ? 1 : 0, transition: "opacity 0.3s" }}
               >

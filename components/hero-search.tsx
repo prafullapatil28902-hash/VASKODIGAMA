@@ -47,7 +47,7 @@ export function HeroSearch() {
         </div>
         <button
           type="submit"
-          className="h-11 shrink-0 rounded-lg bg-signal px-5 text-sm font-semibold text-void transition-colors hover:bg-[#5be9d6]"
+          className="h-11 shrink-0 rounded-lg bg-signal px-5 text-sm font-semibold text-on-signal transition-colors hover:bg-signal-bright"
         >
           Research
         </button>

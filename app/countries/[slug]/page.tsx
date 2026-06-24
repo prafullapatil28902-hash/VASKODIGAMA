@@ -57,7 +57,7 @@ export default async function CountryPage({ params }: PageProps<"/countries/[slu
           <div className="flex flex-wrap items-end justify-between gap-4">
             <div>
               <div className="mb-2 flex items-center gap-2">
-                <span className="mono rounded-md border border-line bg-white/[0.04] px-2 py-0.5 text-[12px] text-signal">{country.iso}</span>
+                <span className="mono rounded-md border border-line bg-ink/[0.04] px-2 py-0.5 text-[12px] text-signal">{country.iso}</span>
                 <span className="mono text-[12px] text-muted">{country.region}</span>
                 <Badge tone="demo" />
               </div>
@@ -150,7 +150,7 @@ export default async function CountryPage({ params }: PageProps<"/countries/[slu
               </thead>
               <tbody className="divide-y divide-line">
                 {records.map((r) => (
-                  <tr key={r.id} className="hover:bg-white/[0.025]">
+                  <tr key={r.id} className="hover:bg-ink/[0.025]">
                     <td className="mono px-4 py-2.5 text-[12px] text-signal">{r.id}</td>
                     <td className="mono px-4 py-2.5 text-muted">{fmtDate(r.date)}</td>
                     <td className="px-4 py-2.5 text-ink-soft">{r.productGroup}</td>
@@ -199,7 +199,7 @@ function Gauge({ label, value, color }: { label: string; value: number; color: s
         <span className="mono text-[10px] uppercase tracking-wider text-dim">{label}</span>
         <span className="mono text-[13px] font-semibold text-ink">{value}</span>
       </div>
-      <div className="h-2 overflow-hidden rounded-full bg-white/[0.05]">
+      <div className="h-2 overflow-hidden rounded-full bg-ink/[0.05]">
         <div className="h-full rounded-full" style={{ width: `${value}%`, background: color }} />
       </div>
     </div>

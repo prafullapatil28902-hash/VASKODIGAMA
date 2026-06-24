@@ -10,7 +10,7 @@ const TONES: Record<BadgeTone, string> = {
   draft: "border-down/30 text-down bg-down/10",
   account: "border-azure/30 text-azure bg-azure/10",
   signal: "border-signal/30 text-signal bg-signal/10",
-  neutral: "border-line-strong text-muted bg-white/5",
+  neutral: "border-line-strong text-muted bg-ink/5",
 };
 
 const LABELS: Partial<Record<BadgeTone, string>> = {

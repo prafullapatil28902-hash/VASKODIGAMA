@@ -87,7 +87,7 @@ export function ContactForm() {
       </div>
       <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
         <Badge tone="demo">Mock Submission</Badge>
-        <button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-signal px-5 py-2.5 text-[14px] font-semibold text-void transition-colors hover:bg-[#5be9d6]">
+        <button type="submit" className="inline-flex items-center gap-2 rounded-lg bg-signal px-5 py-2.5 text-[14px] font-semibold text-on-signal transition-colors hover:bg-signal-bright">
           <Send size={15} /> Send Request
         </button>
       </div>

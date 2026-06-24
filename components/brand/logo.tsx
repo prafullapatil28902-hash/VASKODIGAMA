@@ -10,8 +10,8 @@ export function CoordinateMark({ className }: { className?: string }) {
     <svg viewBox="0 0 40 40" className={cn("h-8 w-8", className)} aria-hidden="true">
       <defs>
         <linearGradient id="vkd-mark" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#5be3d2" />
-          <stop offset="100%" stopColor="#5b9dff" />
+          <stop offset="0%" stopColor="var(--color-signal)" />
+          <stop offset="100%" stopColor="var(--color-azure)" />
         </linearGradient>
       </defs>
       {/* reticle ring */}
@@ -33,7 +33,7 @@ export function CoordinateMark({ className }: { className?: string }) {
         strokeLinejoin="round"
       />
       {/* coordinate centre point */}
-      <circle cx="20" cy="20" r="2" fill="#5be3d2" />
+      <circle cx="20" cy="20" r="2" fill="var(--color-signal)" />
     </svg>
   );
 }

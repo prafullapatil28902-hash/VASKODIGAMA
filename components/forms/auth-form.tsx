@@ -69,7 +69,7 @@ export function AuthForm({ mode }: { mode: "login" | "signup" }) {
         <Field label="Password" name="password" type="password" placeholder="••••••••" error={errors.password} />
 
         <button type="submit" disabled={pending}
-          className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-signal text-[14px] font-semibold text-void transition-colors hover:bg-[#5be9d6] disabled:opacity-70">
+          className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-signal text-[14px] font-semibold text-on-signal transition-colors hover:bg-signal-bright disabled:opacity-70">
           {pending ? <><Loader2 size={16} className="animate-spin" /> Simulating…</> : <>{isSignup ? "Create Account" : "Sign In"} <ArrowRight size={16} /></>}
         </button>
 

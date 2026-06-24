@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "@/components/brand/logo";
 import { ButtonLink } from "@/components/ui/button";
+import { ThemeSwitcher } from "@/components/theme/theme-switcher";
 import { cn } from "@/lib/cn";
 
 const NAV = [
@@ -37,8 +38,8 @@ export function SiteHeader() {
               className={cn(
                 "rounded-md px-3 py-2 text-[13px] font-medium transition-colors",
                 isActive(item.href)
-                  ? "text-ink bg-white/[0.06]"
-                  : "text-muted hover:text-ink hover:bg-white/[0.04]"
+                  ? "text-ink bg-ink/[0.06]"
+                  : "text-muted hover:text-ink hover:bg-ink/[0.04]"
               )}
             >
               {item.label}
@@ -47,6 +48,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="hidden items-center gap-2 lg:flex">
+          <ThemeSwitcher />
           <Link
             href="/login"
             className="rounded-md px-3 py-2 text-[13px] font-medium text-muted transition-colors hover:text-ink"
@@ -58,13 +60,16 @@ export function SiteHeader() {
           </ButtonLink>
         </div>
 
-        <button
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-10 w-10 items-center justify-center rounded-md text-ink hover:bg-white/5 lg:hidden"
-          aria-label="Toggle menu"
-        >
-          {open ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-1 lg:hidden">
+          <ThemeSwitcher />
+          <button
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-10 w-10 items-center justify-center rounded-md text-ink hover:bg-ink/5"
+            aria-label="Toggle menu"
+          >
+            {open ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {open && (
@@ -77,7 +82,7 @@ export function SiteHeader() {
                 onClick={() => setOpen(false)}
                 className={cn(
                   "rounded-md px-3 py-2.5 text-sm font-medium",
-                  isActive(item.href) ? "text-ink bg-white/[0.06]" : "text-muted"
+                  isActive(item.href) ? "text-ink bg-ink/[0.06]" : "text-muted"
                 )}
               >
                 {item.label}

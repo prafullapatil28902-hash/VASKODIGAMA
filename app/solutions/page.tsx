@@ -80,7 +80,7 @@ export default function SolutionsPage() {
             <div className="grid gap-6 lg:grid-cols-[1fr_1.4fr] lg:items-center">
               <div>
                 <div className="mb-3 flex items-center gap-3">
-                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white/[0.03] text-signal">
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-ink/[0.03] text-signal">
                     <j.icon size={20} />
                   </span>
                   <div>
@@ -98,7 +98,7 @@ export default function SolutionsPage() {
                 <div className="flex flex-wrap items-center gap-2">
                   {j.workflow.map((step, si) => (
                     <span key={step} className="flex items-center gap-2">
-                      <span className="rounded-lg border border-line bg-white/[0.02] px-3 py-2 text-[13px] text-ink-soft">
+                      <span className="rounded-lg border border-line bg-ink/[0.02] px-3 py-2 text-[13px] text-ink-soft">
                         <span className="mono mr-1.5 text-signal">{String(si + 1).padStart(2, "0")}</span>
                         {step}
                       </span>

@@ -22,6 +22,15 @@ const REGION_SHORT: Record<string, string> = {
 const TABS = ["Overview", "Markets", "Companies", "Products", "Trade Records"] as const;
 type Tab = (typeof TABS)[number];
 
+const CONCENTRATION_COLORS = [
+  "var(--color-signal)",
+  "var(--color-azure)",
+  "var(--color-violet)",
+  "var(--color-amber)",
+  "var(--color-up)",
+  "var(--color-down)",
+];
+
 export function IntelligenceCenter() {
   const [productGroup, setProductGroup] = useState("");
   const [hsCode, setHsCode] = useState("");
@@ -128,13 +137,13 @@ export function IntelligenceCenter() {
           <Control label="End Date"><DateInput value={endDate} onChange={setEndDate} /></Control>
         </div>
         <div className="mt-3 flex flex-wrap gap-2">
-          <button onClick={saveWorkspace} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-white/[0.03] px-3 py-2 text-[13px] text-ink-soft hover:border-line-strong">
+          <button onClick={saveWorkspace} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-ink/[0.03] px-3 py-2 text-[13px] text-ink-soft hover:border-line-strong">
             {savedAt ? <Check size={14} className="text-up" /> : <Save size={14} />}{savedAt ? "Saved to browser" : "Save Workspace"}
           </button>
-          <button onClick={exportView} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-white/[0.03] px-3 py-2 text-[13px] text-ink-soft hover:border-line-strong">
+          <button onClick={exportView} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-ink/[0.03] px-3 py-2 text-[13px] text-ink-soft hover:border-line-strong">
             <Download size={14} /> Export View
           </button>
-          <button onClick={reset} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-white/[0.03] px-3 py-2 text-[13px] text-ink-soft hover:border-line-strong">
+          <button onClick={reset} className="inline-flex items-center gap-1.5 rounded-md border border-line bg-ink/[0.03] px-3 py-2 text-[13px] text-ink-soft hover:border-line-strong">
             <RotateCcw size={14} /> Reset Filters
           </button>
         </div>
@@ -239,7 +248,7 @@ export function IntelligenceCenter() {
                 </thead>
                 <tbody className="divide-y divide-line">
                   {records.slice(0, 80).map((r) => (
-                    <tr key={r.id} className="hover:bg-white/[0.025]">
+                    <tr key={r.id} className="hover:bg-ink/[0.025]">
                       <td className="mono px-4 py-2.5 text-[12px] text-signal">{r.id}</td>
                       <td className="px-4 py-2.5 text-ink-soft">{r.productGroup}</td>
                       <td className="px-4 py-2.5 text-muted">{tradeData.getCountry(r.originSlug)?.iso} → {tradeData.getCountry(r.destinationSlug)?.iso}</td>
@@ -266,9 +275,9 @@ function ConcentrationNote({ items, label }: { items: { label: string; share: nu
         <span className="mono font-semibold text-signal">{Math.round(top3 * 100)}%</span> of value in
         the current view — a {top3 > 0.6 ? "highly concentrated" : top3 > 0.4 ? "moderately concentrated" : "fragmented"} market.
       </p>
-      <div className="flex h-3 overflow-hidden rounded-full bg-white/[0.05]">
+      <div className="flex h-3 overflow-hidden rounded-full bg-ink/[0.05]">
         {items.slice(0, 6).map((i, idx) => (
-          <div key={i.label} style={{ width: `${i.share * 100}%`, background: ["#34e0c8", "#5b9dff", "#a78bff", "#f5b945", "#3ddc91", "#ff6b78"][idx] }} title={`${i.label}: ${Math.round(i.share * 100)}%`} />
+          <div key={i.label} style={{ width: `${i.share * 100}%`, background: CONCENTRATION_COLORS[idx] }} title={`${i.label}: ${Math.round(i.share * 100)}%`} />
         ))}
       </div>
     </div>

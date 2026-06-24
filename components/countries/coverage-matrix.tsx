@@ -107,7 +107,7 @@ function ActivityBar({ label, value, color }: { label: string; value: number; co
         <span className="mono text-[10px] uppercase tracking-wider text-dim">{label}</span>
         <span className="mono text-[11px] text-muted">{value}</span>
       </div>
-      <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.05]">
+      <div className="h-1.5 overflow-hidden rounded-full bg-ink/[0.05]">
         <div className="h-full rounded-full" style={{ width: `${value}%`, background: color }} />
       </div>
     </div>

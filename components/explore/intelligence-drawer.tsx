@@ -14,7 +14,7 @@ function Copyable({ label, onClick, done, icon: Icon }: { label: string; onClick
   return (
     <button
       onClick={onClick}
-      className="inline-flex items-center gap-1.5 rounded-md border border-line bg-white/[0.03] px-3 py-2 text-[13px] text-ink-soft transition-colors hover:border-line-strong hover:text-ink"
+      className="inline-flex items-center gap-1.5 rounded-md border border-line bg-ink/[0.03] px-3 py-2 text-[13px] text-ink-soft transition-colors hover:border-line-strong hover:text-ink"
     >
       {done ? <Check size={14} className="text-up" /> : <Icon size={14} />}
       {done ? "Copied" : label}
@@ -68,7 +68,7 @@ export function IntelligenceDrawer({ record, onClose }: { record: TradeRecord | 
             <h3 className="mono text-lg font-semibold text-ink">{record.id}</h3>
             <p className="mt-0.5 text-[13px] text-muted">{fmtDate(record.date)} · {record.port}</p>
           </div>
-          <button onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-md text-muted hover:bg-white/5 hover:text-ink" aria-label="Close">
+          <button onClick={onClose} className="flex h-8 w-8 items-center justify-center rounded-md text-muted hover:bg-ink/5 hover:text-ink" aria-label="Close">
             <X size={18} />
           </button>
         </header>
@@ -107,7 +107,7 @@ export function IntelligenceDrawer({ record, onClose }: { record: TradeRecord | 
             <Section title="Related Market Signals">
               <div className="space-y-2">
                 {signals.slice(0, 3).map((s) => (
-                  <div key={s.id} className="rounded-lg border border-line bg-white/[0.02] p-3">
+                  <div key={s.id} className="rounded-lg border border-line bg-ink/[0.02] p-3">
                     <div className="flex items-center justify-between">
                       <span className="mono text-[10px] uppercase tracking-wider text-signal">{s.kind}</span>
                       <span className={cn("mono text-[12px] font-semibold", s.change >= 0 ? "text-up" : "text-down")}>{fmtPct(s.change)}</span>
@@ -121,7 +121,7 @@ export function IntelligenceDrawer({ record, onClose }: { record: TradeRecord | 
         </div>
 
         <footer className="flex flex-wrap gap-2 border-t border-line p-4">
-          <button onClick={exportCsv} className="inline-flex items-center gap-1.5 rounded-md bg-signal px-3 py-2 text-[13px] font-semibold text-void transition-colors hover:bg-[#5be9d6]">
+          <button onClick={exportCsv} className="inline-flex items-center gap-1.5 rounded-md bg-signal px-3 py-2 text-[13px] font-semibold text-on-signal transition-colors hover:bg-signal-bright">
             <Download size={14} /> Export to CSV
           </button>
           <Copyable label="Copy Reference" onClick={copyRef} done={copiedRef} icon={Copy} />
@@ -168,7 +168,7 @@ function Endpoint({ slug, name, region, role }: { slug?: string; name?: string; 
 
 function Participant({ role, name }: { role: string; name?: string }) {
   return (
-    <div className="flex items-center justify-between rounded-lg border border-line bg-white/[0.02] px-3 py-2.5">
+    <div className="flex items-center justify-between rounded-lg border border-line bg-ink/[0.02] px-3 py-2.5">
       <span className="mono text-[11px] uppercase tracking-wider text-dim">{role}</span>
       <span className="text-[13px] font-medium text-ink">{name ?? "—"}</span>
     </div>

@@ -39,8 +39,8 @@ export function FlowNetwork({ records, max = 14 }: { records: TradeRecord[]; max
     <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ minHeight: 280 }}>
       <defs>
         <linearGradient id="flow-edge" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#5b9dff" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#34e0c8" stopOpacity="0.6" />
+          <stop offset="0%" stopColor="var(--color-azure)" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="var(--color-signal)" stopOpacity="0.6" />
         </linearGradient>
       </defs>
       {top.map((l, i) => {
@@ -54,7 +54,7 @@ export function FlowNetwork({ records, max = 14 }: { records: TradeRecord[]; max
         return (
           <g key={i}>
             <path d={d} fill="none" stroke="url(#flow-edge)" strokeWidth={w} strokeLinecap="round" />
-            <circle r="2.2" fill="#aef6ec">
+            <circle r="2.2" fill="var(--color-signal-bright)">
               <animateMotion dur={`${5 + (i % 5)}s`} repeatCount="indefinite" path={d} begin={`${i * 0.4}s`} />
             </circle>
           </g>
@@ -64,9 +64,9 @@ export function FlowNetwork({ records, max = 14 }: { records: TradeRecord[]; max
         const size = 4 + (degree.get(n.slug) ?? 1) * 1.6;
         return (
           <g key={n.slug}>
-            <circle cx={px(n.x)} cy={py(n.y)} r={size + 4} fill="#34e0c8" opacity="0.08" />
-            <circle cx={px(n.x)} cy={py(n.y)} r={size} fill="#0b1020" stroke="#34e0c8" strokeWidth="1.5" />
-            <text x={px(n.x)} y={py(n.y) - size - 5} textAnchor="middle" fontSize="10" className="mono" fill="#c4ccdc">
+            <circle cx={px(n.x)} cy={py(n.y)} r={size + 4} fill="var(--color-signal)" opacity="0.08" />
+            <circle cx={px(n.x)} cy={py(n.y)} r={size} fill="var(--color-surface)" stroke="var(--color-signal)" strokeWidth="1.5" />
+            <text x={px(n.x)} y={py(n.y) - size - 5} textAnchor="middle" fontSize="10" className="mono" fill="var(--color-ink-soft)">
               {n.iso}
             </text>
           </g>

@@ -97,7 +97,7 @@ export default function HomePage() {
                 href={c.href}
                 className="panel panel-hover group flex flex-col gap-3 p-5"
               >
-                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-white/[0.03] text-signal">
+                <span className="flex h-10 w-10 items-center justify-center rounded-lg border border-line bg-ink/[0.03] text-signal">
                   <c.icon size={18} />
                 </span>
                 <h3 className="text-[15px] font-semibold text-ink">{c.title}</h3>

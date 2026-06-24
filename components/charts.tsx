@@ -24,7 +24,7 @@ export function RankBars({ items, accent = "signal" }: { items: RankedItem[]; ac
             <span className="truncate text-[13px] text-ink-soft">{item.label}</span>
             <span className="mono shrink-0 text-[12px] text-muted">{fmtUsd(item.value)}</span>
           </div>
-          <div className="h-2 overflow-hidden rounded-full bg-white/[0.05]">
+          <div className="h-2 overflow-hidden rounded-full bg-ink/[0.05]">
             <div
               className="h-full rounded-full transition-all duration-700"
               style={{
@@ -62,20 +62,20 @@ export function TrendArea({ data, height = 200 }: { data: MonthlyPoint[]; height
     <svg viewBox={`0 0 ${w} ${h}`} className="w-full" preserveAspectRatio="none" style={{ height }}>
       <defs>
         <linearGradient id="trend-fill" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#34e0c8" stopOpacity="0.35" />
-          <stop offset="100%" stopColor="#34e0c8" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--color-signal)" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="var(--color-signal)" stopOpacity="0" />
         </linearGradient>
       </defs>
       {[0.25, 0.5, 0.75].map((g) => (
-        <line key={g} x1={pad.l} x2={w - pad.r} y1={pad.t + g * (h - pad.t - pad.b)} y2={pad.t + g * (h - pad.t - pad.b)} stroke="rgba(148,163,200,0.08)" strokeWidth="1" />
+        <line key={g} x1={pad.l} x2={w - pad.r} y1={pad.t + g * (h - pad.t - pad.b)} y2={pad.t + g * (h - pad.t - pad.b)} stroke="var(--color-line)" strokeWidth="1" />
       ))}
       <path d={area} fill="url(#trend-fill)" />
-      <path d={line} fill="none" stroke="#34e0c8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d={line} fill="none" stroke="var(--color-signal)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       {xy.map(([x, y], i) => (
         <g key={i}>
-          <circle cx={x} cy={y} r="3" fill="#0b1020" stroke="#34e0c8" strokeWidth="1.5" />
+          <circle cx={x} cy={y} r="3" fill="var(--color-surface)" stroke="var(--color-signal)" strokeWidth="1.5" />
           {(i === 0 || i === data.length - 1 || i % 2 === 0) && (
-            <text x={x} y={h - 8} textAnchor="middle" fontSize="10" className="mono" fill="#5a6379">
+            <text x={x} y={h - 8} textAnchor="middle" fontSize="10" className="mono" fill="var(--color-dim)">
               {fmtMonth(data[i].month)}
             </text>
           )}
@@ -115,8 +115,8 @@ export function Heatmap({
                     <div
                       className="group relative flex h-9 items-center justify-center rounded-[5px] text-[10px] font-medium transition-transform hover:scale-[1.06]"
                       style={{
-                        background: `rgba(52,224,200,${0.06 + v * 0.85})`,
-                        color: v > 0.5 ? "#05070e" : "#8a93a8",
+                        background: `color-mix(in srgb, var(--color-signal) ${Math.round((0.06 + v * 0.85) * 100)}%, transparent)`,
+                        color: v > 0.5 ? "var(--color-on-signal)" : "var(--color-muted)",
                       }}
                       title={`${row} · ${c}: ${(v * 100).toFixed(0)} index`}
                     >
@@ -147,7 +147,7 @@ export function Sparkline({ data, className }: { data: number[]; className?: str
   const up = data[data.length - 1] >= data[0];
   return (
     <svg viewBox={`0 0 ${w} ${h}`} className={cn("h-7 w-24", className)} preserveAspectRatio="none">
-      <polyline points={pts} fill="none" stroke={up ? "#3ddc91" : "#ff6b78"} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      <polyline points={pts} fill="none" stroke={up ? "var(--color-up)" : "var(--color-down)"} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }

@@ -62,7 +62,7 @@ export default function PricingPage() {
               key={plan.name}
               className={cn(
                 "panel relative flex flex-col p-6",
-                plan.featured && "border-signal/40 shadow-[0_0_0_1px_rgba(52,224,200,0.2)]"
+                plan.featured && "border-signal/40 ring-1 ring-signal/20"
               )}
             >
               {plan.featured && (
